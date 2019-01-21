@@ -59,7 +59,13 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	 */
 	@Override
 	public boolean add(AccountHolder accountHolder) {
-		// TODO Auto-generated method stub
+		if (accountHolder.getAccountNumber() == null || 
+				accountHolder.getFirstName() == null ||
+				accountHolder.getLastName() == null) {
+			
+			throw new IllegalArgumentException("Missing parameters for create account");
+		}
+		
 		return false;
 	}
 
