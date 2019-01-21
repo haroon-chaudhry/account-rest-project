@@ -1,7 +1,8 @@
 package com.innovadeltech.account.service;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -87,6 +88,13 @@ public class AccountHolderServiceTest {
 		AccountHolder accountHolder = new AccountHolder();
 		service.add(accountHolder);
 	}
+	
+	@Test
+	public void testAddSuccessful() {
+		service.add(expected);
+		verify(repository, times(1)).create(expected);
+	}
+
 
 	@Test
 	public void testDelete() {
