@@ -75,8 +75,12 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	 */
 	@Override
 	public boolean delete(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+		if(id == null)
+		{
+			throw new IllegalArgumentException("Id should not be null");
+		}
+		repository.delete(id);
+		return true;
 	}
 
 }
