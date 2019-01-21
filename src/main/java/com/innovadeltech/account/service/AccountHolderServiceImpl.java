@@ -79,8 +79,8 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 		{
 			throw new IllegalArgumentException("Id should not be null");
 		}
-		repository.delete(id);
-		return true;
+		boolean result = repository.delete(id);
+		return result;
 	}
 
 }

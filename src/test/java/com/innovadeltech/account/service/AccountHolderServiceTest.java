@@ -1,5 +1,6 @@
 package com.innovadeltech.account.service;
 
+import static org.testng.AssertJUnit.assertFalse;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -13,7 +14,6 @@ import java.util.NoSuchElementException;
 
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -101,9 +101,22 @@ public class AccountHolderServiceTest {
 	}
 	
 	@Test
-	public void testDeleteSuccessful() {
-		service.delete(1);
-		verify(repository, times(1)).delete(1);
+	public void testDeleteFailed() {
+		Integer id = -1;
+		when(repository.delete(id)).thenReturn(false);
+		boolean result = service.delete(id);
+		
+		verify(repository, times(1)).delete(id);
+		assertFalse(result);
 	}
-
+	
+	@Test
+	public void testDeleteSuccessful() {
+		Integer id = 1;
+		when(repository.delete(id)).thenReturn(true);
+		boolean result = service.delete(id);
+		
+		verify(repository, times(1)).delete(id);
+		assertTrue(result);
+	}
 }
