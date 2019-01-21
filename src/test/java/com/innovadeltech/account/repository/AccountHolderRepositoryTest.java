@@ -1,16 +1,18 @@
 package com.innovadeltech.account.repository;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.innovadeltech.account.model.AccountHolder;
-
-import junit.framework.Assert;
 
 public class AccountHolderRepositoryTest {
 
@@ -30,18 +32,26 @@ public class AccountHolderRepositoryTest {
 	@Test
 	public void testFindOneNotFound() {
 		AccountHolder accountHolder = repository.findOne(3);
-		Assert.assertNull(accountHolder);
+		assertNull(accountHolder);
 	}
 	
 	@Test
 	public void testFindOneFound() {
 		AccountHolder accountHolder = repository.findOne(1);
-		Assert.assertNotNull(accountHolder);
+		assertNotNull(accountHolder);
 	}
 
 	@Test
-	public void testFindAll() {
-		fail("Not yet implemented"); // TODO
+	public void testFindAllNoRecords() {
+		repository.setAccountDatabase(new HashMap<Integer, AccountHolder>());
+		List<AccountHolder> accountHolders = repository.findAll();
+		assertEquals(0, accountHolders.size());
+	}
+	
+	@Test
+	public void testFindAllRecordsFound() {
+		List<AccountHolder> accountHolders = repository.findAll();
+		assertEquals(2, accountHolders.size());
 	}
 
 	@Test
