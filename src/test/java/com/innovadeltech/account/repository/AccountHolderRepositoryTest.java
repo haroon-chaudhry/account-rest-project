@@ -62,6 +62,11 @@ public class AccountHolderRepositoryTest {
 
 	@Test
 	public void testDelete() {
-		fail("Not yet implemented"); // TODO
+		Map<Integer, AccountHolder> database = new HashMap<>();
+		database.put(1, new AccountHolder(1, "Mark", "Twain", "12345"));
+		repository.setAccountDatabase(database);
+		
+		repository.delete(1);
+		assertNull(database.get(1));
 	}
 }
