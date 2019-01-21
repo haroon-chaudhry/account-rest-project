@@ -27,14 +27,16 @@ import com.innovadeltech.account.repository.AccountHolderRepositry;
 public class AccountHolderServiceTest {
 	
 	@Mock
-	AccountHolderRepositry repository;
+	private AccountHolderRepositry repository;
 	
 	private AccountHolderService service;
+	private AccountHolder expected;
 	
 	@BeforeMethod
 	public void beforeMethod() {
 		MockitoAnnotations.initMocks(this);
 		service = new AccountHolderServiceImpl(repository);
+		expected = new AccountHolder(1, "David", "Boon", "14567");
 	}
 
 	@BeforeClass
@@ -57,7 +59,6 @@ public class AccountHolderServiceTest {
 	public void testGetAccountHolderFound() 
 	{
 		int id = 1;
-		AccountHolder expected = new AccountHolder(1, "David", "Boon", "14567");
 		when(repository.findOne(id)).thenReturn(expected);
 		AccountHolder actual = service.getAccountHolder(id);
 		
@@ -73,7 +74,6 @@ public class AccountHolderServiceTest {
 
 	@Test
 	public void testGetAccountHoldersFound() {
-		AccountHolder expected = new AccountHolder(1, "David", "Boon", "14567");
 		List<AccountHolder> expectedAccountHolders = new ArrayList<AccountHolder>();
 		expectedAccountHolders.add(expected);
 		
@@ -82,9 +82,10 @@ public class AccountHolderServiceTest {
 		assertEquals(expectedAccountHolders, accountHolders);
 	}
 
-	@Test
-	public void testAdd() {
-		Assert.fail("Not yet implemented"); // TODO
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testAddMissingParameters() {
+		AccountHolder accountHolder = new AccountHolder();
+		service.add(accountHolder);
 	}
 
 	@Test
