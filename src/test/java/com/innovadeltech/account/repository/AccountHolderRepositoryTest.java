@@ -56,6 +56,7 @@ public class AccountHolderRepositoryTest {
 	@Test
 	public void testCreate() {
 		AccountHolder mockAccountHolder = new AccountHolder(null, "David", "Boon", "14567");
+		repository.create(mockAccountHolder);
 		assertNotNull(mockAccountHolder.getId());
 	}
 
