@@ -66,7 +66,8 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 			throw new IllegalArgumentException("Missing parameters for create account");
 		}
 		
-		return false;
+		repository.create(accountHolder);
+		return true;
 	}
 
 	/* (non-Javadoc)
