@@ -19,8 +19,7 @@ public class AccountHolderRepositoryImpl implements AccountHolderRepositry{
 
 	@Override
 	public AccountHolder findOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return database.get(id);
 	}
 
 	@Override
