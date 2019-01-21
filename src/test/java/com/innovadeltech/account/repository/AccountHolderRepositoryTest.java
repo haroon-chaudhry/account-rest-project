@@ -25,7 +25,6 @@ public class AccountHolderRepositoryTest {
 		database.put(1, new AccountHolder(1, "Mark", "Twain", "12345"));
 		database.put(2, new AccountHolder(2, "David", "Wills", "45678"));
 		
-		mockAccountHolder = new AccountHolder(4, "David", "Boon", "14567");
 		repository.setAccountDatabase(database);
 	}
 
@@ -56,7 +55,8 @@ public class AccountHolderRepositoryTest {
 
 	@Test
 	public void testCreate() {
-		fail("Not yet implemented"); // TODO
+		AccountHolder mockAccountHolder = new AccountHolder(null, "David", "Boon", "14567");
+		assertNotNull(mockAccountHolder.getId());
 	}
 
 	@Test
