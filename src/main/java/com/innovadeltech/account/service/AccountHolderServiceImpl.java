@@ -6,12 +6,20 @@ package com.innovadeltech.account.service;
 import java.util.List;
 
 import com.innovadeltech.account.model.AccountHolder;
+import com.innovadeltech.account.repository.AccountHolderRepositoryImpl;
+import com.innovadeltech.account.repository.AccountHolderRepositry;
 
 /**
  * @author haroon-chaudhry
  *
  */
 public class AccountHolderServiceImpl implements AccountHolderService {
+	
+	private AccountHolderRepositry repository;
+	
+	public AccountHolderServiceImpl() {
+		repository = new AccountHolderRepositoryImpl();
+	}
 
 	/* (non-Javadoc)
 	 * @see com.innovadeltech.account.service.AccountHolderService#getAccountHolder(java.lang.Integer)

@@ -3,7 +3,6 @@ package com.innovadeltech.account.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +16,6 @@ import com.innovadeltech.account.model.AccountHolder;
 public class AccountHolderRepositoryTest {
 
 	private AccountHolderRepositry repository = new AccountHolderRepositoryImpl();
-	private AccountHolder mockAccountHolder;
 	
 	@Before
 	public void setup() {
