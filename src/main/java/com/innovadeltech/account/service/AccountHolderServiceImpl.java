@@ -4,6 +4,7 @@
 package com.innovadeltech.account.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.innovadeltech.account.model.AccountHolder;
 import com.innovadeltech.account.repository.AccountHolderRepositoryImpl;
@@ -20,14 +21,29 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	public AccountHolderServiceImpl() {
 		repository = new AccountHolderRepositoryImpl();
 	}
+	
+	public AccountHolderServiceImpl(AccountHolderRepositry repository) {
+		this.repository = repository;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.innovadeltech.account.service.AccountHolderService#getAccountHolder(java.lang.Integer)
 	 */
 	@Override
 	public AccountHolder getAccountHolder(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(id == null)
+		{
+			throw new IllegalArgumentException("Id should not be null");
+		}
+		
+		AccountHolder accountHolder = repository.findOne(id);
+		
+		if(accountHolder == null) {
+			throw new NoSuchElementException("The account holder is not found");
+		}
+		
+		return accountHolder;
 	}
 
 	/* (non-Javadoc)
