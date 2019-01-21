@@ -1,8 +1,10 @@
 package com.innovadeltech.account.repository;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.List;
@@ -59,12 +61,14 @@ public class AccountHolderRepositoryTest {
 	}
 
 	@Test
-	public void testDelete() {
-		Map<Integer, AccountHolder> database = new HashMap<>();
-		database.put(1, new AccountHolder(1, "Mark", "Twain", "12345"));
-		repository.setAccountDatabase(database);
-		
-		repository.delete(1);
-		assertNull(database.get(1));
+	public void testDeleteFailed() {
+		boolean result = repository.delete(3);
+		assertFalse(result);
+	}
+	
+	@Test
+	public void testDeleteSuccess() {
+		boolean result = repository.delete(1);
+		assertTrue(result);
 	}
 }

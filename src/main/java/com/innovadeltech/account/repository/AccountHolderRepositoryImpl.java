@@ -43,8 +43,8 @@ public class AccountHolderRepositoryImpl implements AccountHolderRepositry{
 
 	@Override
 	public boolean delete(Integer id) {
-		database.remove(id);
-		return true;
+		AccountHolder result = database.remove(id);
+		return result != null;
 	}
 
 	@Override
