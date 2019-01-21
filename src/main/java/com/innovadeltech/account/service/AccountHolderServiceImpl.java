@@ -51,8 +51,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	 */
 	@Override
 	public List<AccountHolder> getAccountHolders() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	/* (non-Javadoc)
