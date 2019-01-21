@@ -6,6 +6,7 @@ package com.innovadeltech.account.repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.innovadeltech.account.model.AccountHolder;
 
@@ -24,8 +25,9 @@ public class AccountHolderRepositoryImpl implements AccountHolderRepositry{
 
 	@Override
 	public List<AccountHolder> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return database.entrySet().stream()
+                .map(x -> x.getValue())
+                .collect(Collectors.toList());
 	}
 
 	@Override
