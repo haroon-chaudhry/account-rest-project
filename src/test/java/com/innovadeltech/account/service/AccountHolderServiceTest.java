@@ -95,10 +95,15 @@ public class AccountHolderServiceTest {
 		verify(repository, times(1)).create(expected);
 	}
 
-
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testDeleteMissingParameters() {
+		service.delete(null);
+	}
+	
 	@Test
-	public void testDelete() {
-		Assert.fail("Not yet implemented"); // TODO
+	public void testDeleteSuccessful() {
+		service.delete(1);
+		verify(repository, times(1)).delete(1);
 	}
 
 }
