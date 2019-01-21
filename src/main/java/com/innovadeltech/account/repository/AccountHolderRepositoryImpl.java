@@ -43,8 +43,8 @@ public class AccountHolderRepositoryImpl implements AccountHolderRepositry{
 
 	@Override
 	public boolean delete(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+		database.remove(id);
+		return true;
 	}
 
 	@Override
