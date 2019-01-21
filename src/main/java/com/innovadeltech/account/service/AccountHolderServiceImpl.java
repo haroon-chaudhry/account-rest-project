@@ -59,7 +59,8 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	 */
 	@Override
 	public boolean add(AccountHolder accountHolder) {
-		if (accountHolder.getAccountNumber() == null || 
+		if (accountHolder == null  || 
+				accountHolder.getAccountNumber() == null || 
 				accountHolder.getFirstName() == null ||
 				accountHolder.getLastName() == null) {
 			
