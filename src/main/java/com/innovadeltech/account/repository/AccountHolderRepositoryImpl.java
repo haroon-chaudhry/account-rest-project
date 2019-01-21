@@ -6,6 +6,7 @@ package com.innovadeltech.account.repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.innovadeltech.account.model.AccountHolder;
@@ -32,8 +33,12 @@ public class AccountHolderRepositoryImpl implements AccountHolderRepositry{
 
 	@Override
 	public boolean create(AccountHolder accountHolder) {
-		// TODO Auto-generated method stub
-		return false;
+		Random random = new Random();
+		accountHolder.setId(random.nextInt());
+		
+		database.put(accountHolder.getId(), accountHolder);
+		
+		return true;
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class AccountHolder {
 
-	private int id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String accountNumber;
@@ -19,7 +19,7 @@ public class AccountHolder {
 	public AccountHolder() {
 	}
 	
-	public AccountHolder(int id, String firstName, String lastName, String accountNumber) {
+	public AccountHolder(Integer id, String firstName, String lastName, String accountNumber) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -29,14 +29,14 @@ public class AccountHolder {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
